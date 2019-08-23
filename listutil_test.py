@@ -12,6 +12,8 @@ class ListUtilTest(unittest.TestCase):
 
     def test_same_item_list(self):
         self.assertEqual(['a','b','c'],unique(['a','b','a','c','b']))
+        self.assertEqual([1],unique([1,1,1,1,1,1,1,1,1,1,1,1,1,1]))
+        self.assertEqual([1,'a'],unique([1,'a',1,'a',1,'a',1,'a',1,'a']))
 
     def test_nested_list(self):
         lst = [1, 'a', [1,'a'], [1,'a'], 'b', 2, 1]
