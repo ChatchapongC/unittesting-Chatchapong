@@ -1,3 +1,6 @@
+import math
+
+
 class Fraction:
     """A fraction with a numerator and denominator and arithmetic operations.
 
@@ -12,21 +15,39 @@ class Fraction:
         """Initialize a new fraction with the given numerator
            and denominator (default 1).
         """
-        #TODO write this (and remove this TODO comment)
-        pass
+        if (type(numerator) or type(denominator)) is not int:
+            raise TypeError('Value must be integer.')
+        if denominator == 0:
+            self.denominator = 0
+            if numerator == 0:
+                self.numerator = 0
+            else:
+                self.numerator = int(numerator / math.gcd(abs(numerator), abs(denominator)))
+        else:
+            self.numerator = int(numerator/math.gcd(abs(numerator), abs(denominator)))
+            self.denominator = int(denominator/math.gcd(abs(numerator), abs(denominator)))
+            if self.denominator < 0:
+                self.numerator = -1 * self.numerator
+                self.denominator = abs(self.denominator)
 
-    #TODO Write the __add__ method, and remove this TODO comment.
     def __add__(self, frac):
         """Return the sum of two fractions as a new fraction.
            Use the standard formula  a/b + c/d = (ad+bc)/(b*d)
         """
-        pass
+        numerator = (self.numerator*frac.denominator) + (self.denominator*frac.numerator)
+        denominator = self.denominator*frac.denominator
+        return Fraction(numerator, denominator)
 
-    #TODO write __mul__ and __str__.  Verify __eq__ works with your code.
-    #Optional have fun and overload other operators such as 
-    # __sub__ for f-g
-    # __gt__  for f > g
-    # __neg__ for -f (negation)
+    def __mul__(self, frac):
+        numerator = self.numerator*frac.numerator
+        denominator = self.denominator*frac.denominator
+        return Fraction(numerator, denominator)
+
+    def __str__(self):
+        if self.denominator == 1:
+            return str(self.numerator)
+        else:
+            return '{}/{}'.format(self.numerator, self.denominator)
 
     def __eq__(self, frac):
         """Two fractions are equal if they have the same value.
@@ -34,3 +55,4 @@ class Fraction:
            is unique (3/6 is same as 1/2).
         """
         return self.numerator == frac.numerator and self.denominator == frac.denominator
+
