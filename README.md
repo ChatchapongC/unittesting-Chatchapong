@@ -1,4 +1,4 @@
-## Unit Testing Assignment
+## Unit Testing Assignment [![codecov](https://codecov.io/gh/ChatchapongC/unittesting-ChatchapongC/branch/master/graph/badge.svg)](https://codecov.io/gh/ChatchapongC/unittesting-ChatchapongC)
 
 by Chatchapong Chumpada.
 
