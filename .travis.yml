@@ -11,7 +11,7 @@ install:
   - pip install coverage
 # script to run tests. Script can have many commands, one per line.
 script:
-  - coverage run fration_test.py
+  - coverage run fraction_test.py
   - coverage report
 after_success:
   - codecov
